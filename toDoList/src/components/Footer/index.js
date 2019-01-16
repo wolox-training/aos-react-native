@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { ScrollView, View, Text, StyleSheet } from 'react-native';
 
-type Props = {}; 
-export default class Header extends Component<Props> {
+export default class Footer extends Component {
  render() {
   return (
    <ScrollView style={styles.container}>
    <View style={styles.box}>
-      <Text style={styles.welcome}>Todo List</Text>
+      <Text style={styles.welcome}>Remove completed items</Text>
    </View>
    </ScrollView>
    )
@@ -17,15 +16,20 @@ export default class Header extends Component<Props> {
  const styles = StyleSheet.create({
   container: {
    flex: 1,
+   position: 'relative',
   },
   box: {
    height: 50,
-   backgroundColor: '#6ed0ef',
+   backgroundColor: '#EEEEEE',
    justifyContent: 'center',
    alignItems: 'center',
+   alignContent: 'flex-end',
+   marginTop: 50,
+   top: 0,
+   left: 0,
   },
   welcome: {
    textAlign: 'center',
-   color: '#FFFFFF',
+   color: '#e5787a',
   },
  })

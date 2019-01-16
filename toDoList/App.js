@@ -7,23 +7,59 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
+import Header from './src/components/Header';
+import ToDo from './src/components/ToDo';
+import Footer from './src/components/Footer';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+export default class App extends Component {
 
-type Props = {};
-export default class App extends Component<Props> {
+ state = {
+  allComplete: false,
+  value: "",
+  items: []
+}
+
+
+handleToggleAllComplete = () => {
+  const complete = !this.state.allComplete;
+  const newItems = this.state.items.map((item) => ({
+    ...item,
+    complete
+  }))
+  console.table(newItems);
+  this.setState({
+    items: newItems,
+    allComplete: complete
+  })
+}
+
+handleAddItem = () => {
+ if(!this.state.value) return;
+ const newItems = [
+   ...this.state.items,
+   {
+     key: Date.now(),
+     text: this.state.value,
+     complete: false
+   }
+ ]
+  this.setState({
+    items: newItems,
+    value: ""
+  })
+}
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
+        <Header />
+        <ToDo 
+          value ={this.state.value}
+          onAddItem={this.handleAddItem}
+          onChange={( value ) => this.setState({ value })}
+          onToggleAllComplete={this.handleToggleAllComplete}
+        />
+        <Footer />
       </View>
     );
   }
@@ -32,19 +68,6 @@ export default class App extends Component<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#000000',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-    color:'#FFFFFF',
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+    backgroundColor: '#fff',
   },
 });
