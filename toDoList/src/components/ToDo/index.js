@@ -13,7 +13,7 @@ export default class ToDo extends Component {
      value={this.props.value}
      onChangeText={this.props.onChange}
      onSubmitEditing={this.props.onAddItem}
-     placeholder=" What needs to be done?"
+     placeholder="What needs to be done?"
      blurOnSubmit={false}
      returnKeyType="done"
      style={StyleSheet.input}
@@ -27,16 +27,18 @@ const styles = StyleSheet.create({
  header: {
   paddingHorizontal: 16,
   flexDirection: "row",
-  justifyContent: "space-around",
+  justifyContent: "flex-start",
   alignItems: "center",
+  alignContent: "flex-start"
  },
  toggleIcon: {
-  fontSize:30,
+  fontSize:20,
   color:'#CCC',
  },
  input: {
   flex:1,
-  marginLeft: 16,
-  height:50
+  marginLeft: 0,
+  height:50,
+  textAlign: "left",
  },
 })
