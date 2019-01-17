@@ -43,6 +43,5 @@ const styles = StyleSheet.create({
   height: Platform.OS === 'ios' ? 100 : 50,
   textAlign: "left",
   paddingVertical: Platform.OS === 'ios' ? 15 : 0,
- 
  },
 })
