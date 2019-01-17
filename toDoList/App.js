@@ -7,7 +7,7 @@
  */
 
 import React, {Component} from 'react';
-import {StyleSheet, Platform, ListView, Keyboard, View} from 'react-native';
+import {StyleSheet, Platform, ListView, Keyboard, View, ScrollView} from 'react-native';
 import Header from './src/components/Header';
 import ToDo from './src/components/ToDo';
 import Footer from './src/components/Footer';
@@ -32,6 +32,24 @@ class App extends Component {
     })
 }
 
+
+handleRemoveItem = (key) => {
+  const newItems = this.state.items.filter((item) =>{
+    return item.key !== key 
+  })
+  this.setSource(newItems, newItems);
+}
+
+handleToggleComplete = (key, complete) => {
+  const  newItems = this.state.items.map((item) =>{
+    if (item.key !== key) return item;
+    return {
+      ...item,
+      complete
+    }
+  })
+  this.setSource(newItems, newItems);
+}
 handleToggleAllComplete = () => {
   const complete = !this.state.allComplete;
   const newItems = this.state.items.map((item) => ({
@@ -64,7 +82,7 @@ handleAddItem = () => {
           onChange={( value ) => this.setState({ value })}
           onToggleAllComplete={this.handleToggleAllComplete}
         />
-        <View style={styles.content}>
+        <ScrollView style={styles.content}>
           <ListView 
           style={styles.list}
           enableEmptySections
@@ -74,6 +92,8 @@ handleAddItem = () => {
             return (
               <Row
                 key={key}
+                onRemove={() => this.handleRemoveItem(key)}
+                onComplete={(complete) => this.handleToggleComplete(key, complete)}
                 {...value}
               />
             )
@@ -83,7 +103,7 @@ handleAddItem = () => {
           }}
           />
           <Footer />
-        </View>
+        </ScrollView>
       </View>
     );
   }
@@ -95,10 +115,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   list: {
-    backgroundColor: '#FFF',
+    backgroundColor: '#Fff',
+    minHeight: Platform.OS === 'ios' ? 570:460,
   },
   content: {
-    flex: 1
+    flex: 1,
+    minHeight: Platform.OS === 'ios' ? 800:770,
   },
   separator: {
     borderWidth: 1,

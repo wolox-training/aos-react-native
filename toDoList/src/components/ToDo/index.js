@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {  View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import {  View, Text, StyleSheet, TextInput, TouchableOpacity, Platform } from 'react-native';
 
 export default class ToDo extends Component {
 
@@ -13,7 +13,7 @@ export default class ToDo extends Component {
      value={this.props.value}
      onChangeText={this.props.onChange}
      onSubmitEditing={this.props.onAddItem}
-     placeholder="What needs to be done?"
+     placeholder="Enter an Item!"
      blurOnSubmit={false}
      returnKeyType="done"
      style={StyleSheet.input}
@@ -29,7 +29,9 @@ const styles = StyleSheet.create({
   flexDirection: "row",
   justifyContent: "flex-start",
   alignItems: "center",
-  alignContent: "flex-start"
+  alignContent: "flex-start",
+  backgroundColor:"#F6F6F6",
+  paddingVertical: Platform.OS === 'ios' ? 15 : 0,
  },
  toggleIcon: {
   fontSize:20,
@@ -38,7 +40,9 @@ const styles = StyleSheet.create({
  input: {
   flex:1,
   marginLeft: 0,
-  height:50,
+  height: Platform.OS === 'ios' ? 100 : 50,
   textAlign: "left",
+  paddingVertical: Platform.OS === 'ios' ? 15 : 0,
+ 
  },
 })

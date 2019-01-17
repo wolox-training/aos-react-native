@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { ScrollView, View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 export default class Footer extends Component {
  render() {
   return (
-   <ScrollView style={styles.container}>
+   <View style={styles.container}>
    <View style={styles.box}>
       <Text style={styles.welcome}>Remove completed items</Text>
    </View>
-   </ScrollView>
+   </View>
    )
   }
  }
@@ -16,14 +16,16 @@ export default class Footer extends Component {
  const styles = StyleSheet.create({
   container: {
    flex: 1,
-   position: 'relative',
+   bottom:2,
+   flexDirection: 'column-reverse',
+   zIndex: 1,
   },
   box: {
    height: 50,
    backgroundColor: '#EEEEEE',
    justifyContent: 'center',
    alignItems: 'center',
-   alignContent: 'flex-end',
+   alignContent: 'stretch',
    marginTop: 50,
    top: 0,
    left: 0,

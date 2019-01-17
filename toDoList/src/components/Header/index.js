@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Platform } from 'react-native';
 
 export default class Header extends Component {
  render() {
@@ -16,7 +16,8 @@ export default class Header extends Component {
  const styles = StyleSheet.create({
     
   box: {
-   height: 50,
+   paddingTop: Platform.OS === 'ios' ? 40 : 0,
+   height: Platform.OS === 'ios' ? 80 : 50,
    backgroundColor: '#6ed0ef',
    justifyContent: 'center',
    alignItems: 'center',
