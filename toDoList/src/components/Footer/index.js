@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { View, Text} from 'react-native';
 
 import styles from './styles';
 
-export default class Footer extends Component {
- render() {
+const Footer = () => {
   return (
    <View style={styles.container}>
    <View style={styles.box}>
@@ -12,6 +11,6 @@ export default class Footer extends Component {
    </View>
    </View>
    )
-  }
-  
- }
+}
+
+export default Footer;

@@ -1,11 +1,5 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- */
-
 import React, {Component} from 'react';
-import {StyleSheet, Platform, ListView, Keyboard, View, ScrollView} from 'react-native';
+import { ListView, Keyboard, View, ScrollView} from 'react-native';
 import Header from './src/components/Header';
 import ToDo from './src/components/ToDo';
 import Footer from './src/components/Footer';

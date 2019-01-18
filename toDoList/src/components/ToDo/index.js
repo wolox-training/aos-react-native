@@ -1,18 +1,19 @@
-import React, { Component } from 'react';
-import {  View, Text, StyleSheet, TextInput, TouchableOpacity, Platform } from 'react-native';
+import React from 'react';
+import {  View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import PropTypes from 'prop-types';
 
-export default class ToDo extends Component {
+import styles from './styles';
 
- render() {
+const ToDo = ({ onToggleAllComplete, value, onChange, onAddItem}) =>  {
   return (
    <View style={styles.header}>
-   <TouchableOpacity onPress={this.props.onToggleAllComplete}>
+   <TouchableOpacity onPress={onToggleAllComplete}>
      <Text style={styles.toggleIcon}>{String.fromCharCode(10003)}</Text>
    </TouchableOpacity>
     <TextInput
-     value={this.props.value}
-     onChangeText={this.props.onChange}
-     onSubmitEditing={this.props.onAddItem}
+     value={value}
+     onChangeText={onChange}
+     onSubmitEditing={onAddItem}
      placeholder="Enter an Item!"
      blurOnSubmit={false}
      returnKeyType="done"
@@ -21,27 +22,13 @@ export default class ToDo extends Component {
    </View>
   );
  }
-}
 
-const styles = StyleSheet.create({
- header: {
-  paddingHorizontal: 16,
-  flexDirection: "row",
-  justifyContent: "flex-start",
-  alignItems: "center",
-  alignContent: "flex-start",
-  backgroundColor:"#F6F6F6",
-  paddingVertical: Platform.OS === 'ios' ? 15 : 0,
- },
- toggleIcon: {
-  fontSize:20,
-  color:'#CCC',
- },
- input: {
-  flex:1,
-  marginLeft: 0,
-  height: Platform.OS === 'ios' ? 100 : 50,
-  textAlign: "left",
-  paddingVertical: Platform.OS === 'ios' ? 15 : 0,
- },
-})
+ToDo.propTypes = {
+  onToggleAllComplete: PropTypes.func,
+  value: PropTypes.string,
+  onChange: PropTypes.bool,
+  onChange: PropTypes.func,
+};
+
+export default ToDo;
+
