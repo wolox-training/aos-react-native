@@ -2,8 +2,6 @@
  * Sample React Native App
  * https://github.com/facebook/react-native
  *
- * @format
- * @flow
  */
 
 import React, {Component} from 'react';
@@ -13,6 +11,7 @@ import ToDo from './src/components/ToDo';
 import Footer from './src/components/Footer';
 import Row from './src/components/Row';
 
+import styles from './styles';
 
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 class App extends Component {
@@ -72,6 +71,27 @@ handleAddItem = () => {
 
  this.setSource(newItems, newItems, { value: ""})
 }
+
+renderSeparator = (sectionId, rowId) => {
+  return <View key={rowId} style={styles.separator} />
+}
+
+
+listViewRenderRow = ({ key, ...value}) => {
+  return (
+    <Row
+      key={key}
+      onRemove={() => this.handleRemoveItem(key)}
+      onComplete={(complete) => this.handleToggleComplete(key, complete)}
+      {...value}
+    />
+  )
+}
+
+listViewOnScroll = () => Keyboard.dismiss();
+
+toDoOnChange = ( value ) => this.setState({ value });
+
   render() {
     return (
       <View style={styles.container}>
@@ -79,7 +99,7 @@ handleAddItem = () => {
         <ToDo 
           value ={this.state.value}
           onAddItem={this.handleAddItem}
-          onChange={( value ) => this.setState({ value })}
+          onChange={this.toDoOnChange}
           onToggleAllComplete={this.handleToggleAllComplete}
         />
         <ScrollView style={styles.content}>
@@ -87,45 +107,15 @@ handleAddItem = () => {
           style={styles.list}
           enableEmptySections
           dataSource={this.state.dataSource}
-          onScroll={() => Keyboard.dismiss()}
-          renderRow={({ key, ...value}) => {
-            return (
-              <Row
-                key={key}
-                onRemove={() => this.handleRemoveItem(key)}
-                onComplete={(complete) => this.handleToggleComplete(key, complete)}
-                {...value}
-              />
-            )
-          }}
-          renderSeparator={(sectionId, rowId) => {
-            return <View key={rowId} style={styles.separator} />
-          }}
+          onScroll={this.listViewOnScroll}
+          renderRow={this.listViewRenderRow}
+          renderSeparator={this.renderSeparator}
           />
           <Footer />
         </ScrollView>
       </View>
     );
   }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-  list: {
-    backgroundColor: '#Fff',
-    minHeight: Platform.OS === 'ios' ? 570:460,
-  },
-  content: {
-    flex: 1,
-    minHeight: Platform.OS === 'ios' ? 800:770,
-  },
-  separator: {
-    borderWidth: 1,
-    borderColor: '#F5F5F5',
-  },
-});
+};
 
 export default App;
