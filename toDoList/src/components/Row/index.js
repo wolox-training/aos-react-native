@@ -6,27 +6,23 @@ import styles from './styles';
 
 function Row({ complete, onComplete, text, onRemove }) {
   return (
-   <View style={styles.container}>
-      <Switch 
-        value={complete}
-        onValueChange={onComplete}
-      />
-   <View style={styles.textWrap}>
-      <Text style={[styles.text, complete && styles.complete]}>{text}</Text>
-   </View>
+    <View style={styles.container}>
+      <Switch value={complete} onValueChange={onComplete} />
+      <View style={styles.textWrap}>
+        <Text style={[styles.text, complete && styles.complete]}>{text}</Text>
+      </View>
       <TouchableOpacity onPress={onRemove}>
-         <Text style={styles.destroy}>x</Text>
+        <Text style={styles.destroy}>x</Text>
       </TouchableOpacity>
-   </View>
+    </View>
   );
- }
+}
 
- Row.propTypes = {
+Row.propTypes = {
   complete: PropTypes.bool,
   onComplete: PropTypes.func,
   text: PropTypes.string,
-  onRemove: PropTypes.func,
-
+  onRemove: PropTypes.func
 };
 
 export default Row;
