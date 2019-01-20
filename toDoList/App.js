@@ -24,6 +24,13 @@ class App extends Component {
     });
   };
 
+  handleRemoveAllItems = () => {
+    const newItems = this.state.items.filter(item => {
+      return !item.complete;
+    });
+    this.setSource(newItems, newItems);
+  };
+
   handleRemoveItem = key => {
     const newItems = this.state.items.filter(item => {
       return item.key !== key;
@@ -99,7 +106,7 @@ class App extends Component {
           renderItem={this.listViewRenderRow}
           ItemSeparatorComponent={this.renderSeparator}
         />
-        <Footer />
+        <Footer onRemove={() => this.handleRemoveAllItems()} />
       </View>
     );
   }

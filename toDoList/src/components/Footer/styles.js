@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 
 import { gray, red } from '../../constants/colors';
 
@@ -17,7 +17,12 @@ export default StyleSheet.create({
     alignContent: 'stretch',
     marginTop: 50,
     top: 0,
-    left: 0
+    left: 0,
+    ...Platform.select({
+      ios: {
+        paddingBottom: 15
+      }
+    })
   },
   welcome: {
     textAlign: 'center',
