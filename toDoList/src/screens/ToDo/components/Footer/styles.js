@@ -15,7 +15,6 @@ export default StyleSheet.create({
         elevation:1,
       }
     }),
-   
   },
   box: {
     height: 50,
