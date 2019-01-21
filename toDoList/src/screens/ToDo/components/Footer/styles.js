@@ -1,6 +1,6 @@
 import { StyleSheet, Platform } from 'react-native';
 
-import { gray, red } from '../../constants/colors';
+import { gray, red } from '../../../../constants/colors';
 
 export default StyleSheet.create({
   container: {
@@ -15,7 +15,6 @@ export default StyleSheet.create({
         elevation:1,
       }
     }),
-   
   },
   box: {
     height: 50,

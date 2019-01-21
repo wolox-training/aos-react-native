@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import styles from './styles';
 
-const ToDo = ({ onToggleAllComplete, value, onChange, onAddItem }) => {
+const ToDoInput = ({ onToggleAllComplete, value, onChange, onAddItem }) => {
   return (
     <View style={styles.header}>
       <TouchableOpacity onPress={onToggleAllComplete}>
@@ -23,11 +23,11 @@ const ToDo = ({ onToggleAllComplete, value, onChange, onAddItem }) => {
   );
 };
 
-ToDo.propTypes = {
+ToDoInput.propTypes = {
   onToggleAllComplete: PropTypes.func,
   value: PropTypes.string,
   onChange: PropTypes.bool,
   onChange: PropTypes.func
 };
 
-export default ToDo;
+export default ToDoInput;
