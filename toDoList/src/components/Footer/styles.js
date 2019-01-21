@@ -7,7 +7,15 @@ export default StyleSheet.create({
     flex: 1,
     bottom: 2,
     flexDirection: 'column-reverse',
-    zIndex: 1
+    ...Platform.select({
+      ios: {
+        zIndex: 1,
+      },
+      android: {
+        elevation:1,
+      }
+    }),
+   
   },
   box: {
     height: 50,
