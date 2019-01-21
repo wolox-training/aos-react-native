@@ -2,21 +2,26 @@ import React from 'react';
 import { View, Text, Button } from 'react-native';
 import { createAppContainer, createStackNavigator, StackActions, NavigationActions } from 'react-navigation';
 
+import styles from './style';
+
 class HomeScreen extends React.Component {
+
+goDetails = () => {
+  this.props.navigation.dispatch(
+    StackActions.reset({
+      index: 0,
+      actions: [NavigationActions.navigate({ routeName: 'Details' })]
+    })
+  );
+}
+
   render() {
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <View style={styles.container}>
         <Text>Home Screen</Text>
         <Button
           title="Go to Details"
-          onPress={() => {
-            this.props.navigation.dispatch(
-              StackActions.reset({
-                index: 0,
-                actions: [NavigationActions.navigate({ routeName: 'Details' })]
-              })
-            );
-          }}
+          onPress={this.goDetails}
         />
       </View>
     );
@@ -26,7 +31,7 @@ class HomeScreen extends React.Component {
 class DetailsScreen extends React.Component {
   render() {
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <View style={style.container}>
         <Text>Details Screen</Text>
       </View>
     );
