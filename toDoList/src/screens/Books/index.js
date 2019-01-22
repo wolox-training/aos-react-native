@@ -9,11 +9,16 @@ class Books extends Component {
     books: []
   };
 
-  async componentDidMount() {
-    const books = await getBooks();
-    this.setState({
-      books: books.data
-    });
+  componentDidMount() {
+    getBooks()
+      .then(({ data }) => {
+        this.setState({
+          books: data
+        });
+      })
+      .catch(err => {
+        console.log('Ha ocurrido un error');
+      });
   }
 
   listViewRenderRow = ({ item: { id, ...props } }) => {
