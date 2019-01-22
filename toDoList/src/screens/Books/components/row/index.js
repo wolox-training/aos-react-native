@@ -4,19 +4,17 @@ import PropTypes from 'prop-types';
 
 import styles from './style';
 
-class Row extends Component{
-
+class Row extends Component {
   renderImage(uri) {
-    const image = uri ? <Image source={{uri}} style={styles.image}/> : <View style={{...styles.image, ...styles.withoutImage}}/>
     return (
       <View style={styles.imageContainer}>
-        {image}
+        {uri ? <Image source={{ uri }} style={styles.image} /> : <View style={[styles.image, styles.withoutImage]} />}
       </View>
     );
   }
 
   render() {
-    const {image_url, title, author} = this.props;
+    const { image_url, title, author } = this.props;
     return (
       <View style={styles.container}>
         {this.renderImage(image_url)}
@@ -26,14 +24,13 @@ class Row extends Component{
         </View>
       </View>
     );
-  };
+  }
 }
 
 Row.propTypes = {
   image_url: PropTypes.string,
-  title: PropTypes.string,
-  author: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired
 };
 
 export default Row;
-  
