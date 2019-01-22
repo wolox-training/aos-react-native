@@ -15,7 +15,6 @@ class ToDo extends Component {
   };
 
   setSource = (items, itemsDatasource, otherState = {}) => {
-    console.log(itemsDatasource, 'items', items);
     this.setState({
       items,
       dataSource: itemsDatasource,
