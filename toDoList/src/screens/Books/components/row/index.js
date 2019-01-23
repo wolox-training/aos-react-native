@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, TouchableHighlight } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 
 import styles from './style';
@@ -23,7 +23,7 @@ class Row extends Component {
   render() {
     const { image_url, title, author } = this.props;
     return (
-      <TouchableHighlight underlayColor="#eee" onPress={this.onPress}>
+      <TouchableOpacity onPress={this.onPress}>
         <View style={styles.container}>
           {this.renderImage(image_url)}
           <View style={styles.textWrap}>
@@ -31,7 +31,7 @@ class Row extends Component {
             <Text style={styles.subtitle}>{author}</Text>
           </View>
         </View>
-      </TouchableHighlight>
+      </TouchableOpacity>
     );
   }
 }

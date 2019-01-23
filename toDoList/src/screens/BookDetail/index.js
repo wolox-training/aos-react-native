@@ -5,24 +5,24 @@ import styles from './style';
 
 class BookDetail extends Component {
   render() {
-    const { author, genre, publisher, year, image_url } = this.props.navigation.state.params;
+    const { image_url, ...params } = this.props.navigation.state.params;
+
+    const detail = Object.keys(params).map(key => (
+      <View style={styles.content}>
+        <Text style={styles.bold}>{key}</Text>
+        <Text style={styles.text}>{params[key]}</Text>
+      </View>
+    ));
+
     return (
       <View style={styles.container}>
-        {image_url !== null ? (
+        {image_url ? (
           <Image source={{ uri: image_url }} style={styles.image} />
         ) : (
           <View style={[styles.image, styles.withoutImage]} />
         )}
-        <View style={styles.content}>
-          <Text style={styles.bold}>Autor: </Text>
-          <Text style={styles.text}>{author}</Text>
-          <Text style={styles.bold}>Genero:</Text>
-          <Text style={styles.text}>{genre}</Text>
-          <Text style={styles.bold}>Publicación:</Text>
-          <Text style={styles.text}>{publisher}</Text>
-          <Text style={styles.bold}>Año:</Text>
-          <Text style={styles.text}>{year}</Text>
-        </View>
+
+        {detail}
       </View>
     );
   }

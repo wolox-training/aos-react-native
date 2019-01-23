@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { gray_four, gray_five } from '../../../../constants/colors';
+import { gray_light, gray_dark } from '../../../../constants/colors';
 
 export default StyleSheet.create({
   container: {
@@ -18,16 +18,16 @@ export default StyleSheet.create({
     borderRadius: 25
   },
   withoutImage: {
-    backgroundColor: gray_four
+    backgroundColor: gray_light
   },
   textWrap: {
-    color: gray_four
+    color: gray_light
   },
   title: {
     fontSize: 20
   },
   subtitle: {
     fontSize: 14,
-    color: gray_five
+    color: gray_dark
   }
 });

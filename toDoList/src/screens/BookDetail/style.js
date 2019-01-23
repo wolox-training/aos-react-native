@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { gray_five, white, blue_light } from '../../constants/colors';
+import { gray_dark, white, blue_light } from '../../constants/colors';
 
 export default StyleSheet.create({
   container: {
@@ -24,7 +24,7 @@ export default StyleSheet.create({
   bold: {
     fontWeight: 'bold',
     fontSize: 11,
-    color: gray_five
+    color: gray_dark
   },
   image: {
     width: 200,
@@ -35,6 +35,6 @@ export default StyleSheet.create({
     paddingVertical: 15
   },
   withoutImage: {
-    backgroundColor: gray_five
+    backgroundColor: gray_dark
   }
 });
