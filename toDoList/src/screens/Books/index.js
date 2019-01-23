@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, FlatList } from 'react-native';
+import { StackActions } from 'react-navigation';
 import Row from './components/row';
 import { getBooks } from '../../service/service';
 import styles from './style';
@@ -7,6 +8,16 @@ import styles from './style';
 class Books extends Component {
   state = {
     books: []
+  };
+
+  onRowPress = rowData => {
+    const action = StackActions.push({
+      routeName: 'BookDetail',
+      params: {
+        ...rowData
+      }
+    });
+    this.props.navigation.dispatch(action);
   };
 
   componentDidMount() {
@@ -23,7 +34,7 @@ class Books extends Component {
 
   listViewRenderRow = ({ item: { id, ...props } }) => {
     const key = id.toString();
-    return <Row key={key} {...props} />;
+    return <Row key={key} {...props} onPress={this.onRowPress} />;
   };
 
   renderSeparator = sectionId => {
