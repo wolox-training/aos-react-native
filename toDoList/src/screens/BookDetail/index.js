@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Image } from 'react-native';
+import { Text, View, Image, ScrollView } from 'react-native';
 
 import styles from './style';
 
@@ -17,15 +17,17 @@ class BookDetail extends Component {
   render() {
     const { image_url } = this.props.navigation.state.params;
     return (
-      <View style={styles.container}>
-        {image_url ? (
-          <Image source={{ uri: image_url }} style={styles.image} />
-        ) : (
-          <View style={[styles.image, styles.withoutImage]} />
-        )}
+      <ScrollView>
+        <View style={styles.container}>
+          {image_url ? (
+            <Image source={{ uri: image_url }} style={styles.image} />
+          ) : (
+            <View style={[styles.image, styles.withoutImage]} />
+          )}
 
-        {this.detail()}
-      </View>
+          {this.detail()}
+        </View>
+      </ScrollView>
     );
   }
 }
