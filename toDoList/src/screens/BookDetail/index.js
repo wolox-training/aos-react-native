@@ -4,16 +4,18 @@ import { Text, View, Image } from 'react-native';
 import styles from './style';
 
 class BookDetail extends Component {
-  render() {
+  detail() {
     const { image_url, ...params } = this.props.navigation.state.params;
-
-    const detail = Object.keys(params).map(key => (
-      <View style={styles.content}>
+    return Object.keys(params).map(key => (
+      <View style={styles.content} key={key}>
         <Text style={styles.bold}>{key}</Text>
         <Text style={styles.text}>{params[key]}</Text>
       </View>
     ));
+  }
 
+  render() {
+    const { image_url } = this.props.navigation.state.params;
     return (
       <View style={styles.container}>
         {image_url ? (
@@ -22,7 +24,7 @@ class BookDetail extends Component {
           <View style={[styles.image, styles.withoutImage]} />
         )}
 
-        {detail}
+        {this.detail()}
       </View>
     );
   }
