@@ -1,6 +1,6 @@
 import { StyleSheet, Platform } from 'react-native';
 
-import { gray, red } from '../../../../constants/colors';
+import { gray_light, red } from '../../../../constants/colors';
 
 export default StyleSheet.create({
   container: {
@@ -9,16 +9,16 @@ export default StyleSheet.create({
     flexDirection: 'column-reverse',
     ...Platform.select({
       ios: {
-        zIndex: 1,
+        zIndex: 1
       },
       android: {
-        elevation:1,
+        elevation: 1
       }
-    }),
+    })
   },
   box: {
     height: 50,
-    backgroundColor: gray,
+    backgroundColor: gray_light,
     justifyContent: 'center',
     alignItems: 'center',
     alignContent: 'stretch',

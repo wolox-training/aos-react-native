@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import { gray_one, gray_two } from '../../../../constants/colors';
+import { gray_dark, red } from '../../../../constants/colors';
 
 export default StyleSheet.create({
   container: {
@@ -18,10 +18,10 @@ export default StyleSheet.create({
   },
   text: {
     fontSize: 24,
-    color: gray_one
+    color: gray_dark
   },
   destroy: {
     fontSize: 20,
-    color: gray_two
+    color: red
   }
 });

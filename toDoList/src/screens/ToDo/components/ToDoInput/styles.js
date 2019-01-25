@@ -1,6 +1,6 @@
 import { Platform, StyleSheet } from 'react-native';
 
-import { gray_three, gray_four } from '../../../../constants/colors';
+import { gray_light, gray_dark } from '../../../../constants/colors';
 
 export default StyleSheet.create({
   header: {
@@ -9,7 +9,7 @@ export default StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     alignContent: 'flex-start',
-    backgroundColor: gray_three,
+    backgroundColor: gray_light,
     ...Platform.select({
       ios: {
         paddingVertical: 15
@@ -21,7 +21,7 @@ export default StyleSheet.create({
   },
   toggleIcon: {
     fontSize: 20,
-    color: gray_four
+    color: gray_dark
   },
   input: {
     flex: 1,

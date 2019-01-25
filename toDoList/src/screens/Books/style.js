@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import { gray_three } from '../../constants/colors';
+import { gray } from '../../constants/colors';
 
 export default StyleSheet.create({
   container: {
@@ -14,7 +14,7 @@ export default StyleSheet.create({
   },
   separator: {
     borderWidth: 1,
-    borderColor: gray_three,
+    borderColor: gray,
     marginHorizontal: 20
   }
 });
